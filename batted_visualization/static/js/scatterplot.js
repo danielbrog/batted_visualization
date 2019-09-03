@@ -23,7 +23,7 @@ window.onload = function () {
         axisY: {
             title: "distance (in ft.)",
             minimum: 0,
-            maximum: 420
+            maximum: 400
         },
         data: [{
             type: "scatter",
