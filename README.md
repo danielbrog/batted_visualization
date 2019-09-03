@@ -7,6 +7,7 @@ set up a virtual environment with Python running at version 3.7
 
 ##### Run the commands Below to build the database
 python manage.py makemigrations  
+python manage.py makemigrations visualization_app  
 python manage.py migrate  
 python import_data.py  
 
