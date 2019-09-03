@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+{% extends "visualization_app/base.html" %}
+{% load staticfiles %}
+{% block body_block %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/hit_table.css' %}">
+<script type="text/javascript">
+const hit_data = []
+'{% for hit in hit_data %}'
+    hit_data.push({
+                x: parseInt('{{hit.landing_location_x}}', 10),
+                y: parseInt('{{hit.landing_location_y}}', 10),
+                pitcher: '{{hit.pitchername}}',
+                pitchside: '{{hit.pitchside}}',
+                launchspeed: '{{hit.launch_speed}}',
+                result_type: '{{hit.result_type}}',
+                date: '{{hit.date}}',
+                pitch_type: '{{hit.pitch_type}}',
+            })
+'{% endfor %}'
+</script>
+
+
+
+
+<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+<h1 class="title"> {{hit_data.0.battername}}'s Data</h1>
+<div class="row">
+<div class="person col-lg-3">
+<div class="personImage"><img id='batterPic' class="importedImage" src="https://securea.mlb.com/mlb/images/players/head_shot/{{hit_data.0.batterid}}.jpg"></div>
+
+</div>
+
+<div class="info col-lg-9">
+    <div id="teamName"><b>Team Name: </b>{{batter.teamname}}</div>
+    <div id="age"><b>Age:</b></div>
+    <div id="height"><b>Height:</b></div>
+    <div id="batHand"><b>Bat Hand:</b></div>
+    <script src="{% static 'js/description.js' %}"></script>
+</div>
+
+</div>
+
+
+
+<div class="spraychart row">
+    
+        <div class="forms col-lg-3">
+        <form class='filterFilter' id='filter' >Filter by:</br>
+                <input type="radio" name="filter" value="result">Result<br>
+                <input type="radio" name="filter" value="pitchType">Pitch Type<br>
+                <input type="radio" name="filter" value="field_out">Field Out
+        </form>
+
+        <form class='chartFilter' id='result' hidden='true'>Results:</br>
+                {% for key,value in results.items %}
+                <input type="radio" name="result" value= {{ key }}>{{ value }}<br>
+                {% endfor %}
+        </form>
+        <form class='chartFilter' id='pitchType' hidden='true'>Pitch Type:</br>
+                {% for key,value in pitch_type.items %}
+                <input type="radio" name="pitchtype" value={{ key }}>{{ value }}<br>
+                {% endfor %}
+        </form>
+        </div>
+        
+        
+        <div class="plot col-lg-9">
+        <script src="{% static 'js/scatterplot.js' %}"></script>
+                <div style="height: 400px; width: 400px; background-image: url('{% static 'images/baseball_background.svg' %}');  background-repeat: no-repeat;
+                background-size: 100% 100%;">
+                <div id="chartContainer" style="position: relative; "></div></div>
+            
+        </div>
+
+
+
+
+    </div>
+
+{% endblock %}
