@@ -17,13 +17,13 @@ window.onload = function () {
         },
         axisX: {
             title: "distance (in ft.)",
-            minimum: -200,
-            maximum: 200
+            minimum: -210,
+            maximum: 210
         },
         axisY: {
             title: "distance (in ft.)",
             minimum: 0,
-            maximum: 400
+            maximum: 420
         },
         data: [{
             type: "scatter",
