@@ -7,3 +7,9 @@
     text-align: center;
     margin-bottom: 3rem;
 }
+
+.selectfilter{
+    border:none;
+    background-color: lightblue;
+    color: darkblue;
+}

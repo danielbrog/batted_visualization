@@ -46,20 +46,26 @@ const hit_data = []
     
         <div class="forms col-lg-3">
         <form class='filterFilter' id='filter' >Filter by:</br>
-                <input type="radio" name="filter" value="result">Result<br>
-                <input type="radio" name="filter" value="pitchType">Pitch Type<br>
-                <input type="radio" name="filter" value="field_out">Field Out
+                <select name='filters' class="selectfilter">
+                <option name="filter" value="">Filter By:<br>    
+                <option name="filter" value="result">Result<br>
+                <option name="filter" value="pitchType">Pitch Type<br>
+        </select>
         </form>
 
         <form class='chartFilter' id='result' hidden='true'>Results:</br>
+                <select name='results' class="selectfilter">
                 {% for key,value in results.items %}
-                <input type="radio" name="result" value= {{ key }}>{{ value }}<br>
+                <option name="result" value= {{ key }}>{{ value }}<br>
                 {% endfor %}
+                </select>
         </form>
         <form class='chartFilter' id='pitchType' hidden='true'>Pitch Type:</br>
-                {% for key,value in pitch_type.items %}
-                <input type="radio" name="pitchtype" value={{ key }}>{{ value }}<br>
+                <select name='pitches' class="selectfilter">
+                {% for key,value in pitch_types.items %}
+                <option name="pitchtype" value={{ key }}>{{ value }}<br>
                 {% endfor %}
+                </select>
         </form>
         </div>
         

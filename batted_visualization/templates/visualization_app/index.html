@@ -1,6 +1,9 @@
 <!DOCTYPE html>
+
     {% extends "visualization_app/base.html" %}
     {% block body_block %}
+    {% load staticfiles %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}">
         <h1>Welcome to Baseball Stats!</h1>
 
 
@@ -8,48 +11,49 @@
                 {{form.as_p}}
                 {% csrf_token %}
                 <input type="submit" class="btn btn-primary" value="Submit"/>
+            </form>
 
+                <div class="players row">
+                <div class="batterInfo col-6">
         {% if batter_info %}
-        <div class="batterInfo">
-            <p>Player Data:</p>
+            <h2>Player Data:</h2>
             <table>
-                    <thead>
-                        <th> Batter Name</th>
-                        <th> Team name</th>
-                    </thead>
-                    {% for batter in batter_info %}
-                    <tr>
-                        <td> <a href="/visualization_app/batter/{{batter.batterid}}">{{ batter.name }}</a></td>
-                        <td> {{ batter.teamname }}</td>
-                    </tr>
-                    {% endfor %}
-                </table>
-                {% else %}
-                <p> No Batter data found!</p>
-                </div>
+                <thead>
+                    <th> Batter Name</th>
+                    <th> Team name</th>
+                </thead>
+                {% for batter in batter_info %}
+                <tr>
+                    <td> <a href="/visualization_app/batter/{{batter.batterid}}">{{ batter.name }}</a></td>
+                    <td> {{ batter.teamname }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        {% else %}
+                <h2> No Batter data found!</h2>
         {% endif %}
-
+        </div>
+        
+        <div class="PitcherInfo col-6">
         {% if pitcher_info %}
-        <div class="PitcherInfo">
-            <p>Pitcher Data:</p>
+            <h2>Pitcher Data:</h2>
             <table>
-                    <thead>
-                        <th> Pitcher Name</th>
-                        <th> Team Name</th>
-                    </thead>
-                    {% for pitcher in pitcher_info %}
-                    <tr>
-                        <td> <a href="/visualization_app/pitcher/{{pitcher.pitcherid}}">{{ pitcher.name }}</a></td>
-                        <td> {{ pitcher.teamname }}</td>
-                    </tr>
-                    {% endfor %}
-                </table>
-                {% else %}
-                <p> No Pitcher data found!</p>
-                </div>
+                <thead>
+                    <th> Pitcher Name</th>
+                    <th> Team Name</th>
+                </thead>
+                {% for pitcher in pitcher_info %}
+                <tr>
+                    <td> <a href="/visualization_app/pitcher/{{pitcher.pitcherid}}">{{ pitcher.name }}</a></td>
+                    <td> {{ pitcher.teamname }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        {% else %}
+            <h2> No Pitcher data found!</h2>
         {% endif %}
-
-                
+        </div>
+    </div>
 
 
 
