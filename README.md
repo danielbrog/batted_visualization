@@ -3,7 +3,7 @@
 #### To build the project, follow the steps below
 
 ##### Set up Virtual Environment
-set up a virtual environment with Python running at version 3.7
+set up a virtual environment with Python running at version 3.7 and django
 
 ##### Run the commands Below to build the database
 python manage.py makemigrations  
