@@ -1,4 +1,4 @@
-# Rogers Blue Jays Coding Challenge
+# Visualize batting data
 
 #### To build the project, follow the steps below
 
